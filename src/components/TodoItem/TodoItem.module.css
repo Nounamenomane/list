@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid rgb(174, 174, 174);
+}
+
+.wrapper:nth-child(even) {
+    background-color: rgb(223, 221, 221);
+    /* Измени цвет фона на свой выбор */
+}
+
+.complete {
+    text-decoration: line-through;
+}
+.actions button{
+padding: 5px;
+margin: 5px;
+background-color: rgb(5, 5, 247);
+color: white;
+border: none;
+border-radius: 3px;
+}
