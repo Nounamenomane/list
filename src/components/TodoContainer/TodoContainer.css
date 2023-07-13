@@ -3,3 +3,8 @@
     margin: 10px;
 
 }
+
+.wrapper>h1 {
+    text-align: center;
+    color: rgb(114, 116, 116);
+}

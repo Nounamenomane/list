@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import CreateTodo from "./components/creareTodo/createTodo";
 import Header from "./components/Header/Header";
@@ -6,14 +6,13 @@ import TodoContainer from "./components/TodoContainer/TodoContainer";
 import TodoItem from "./components/TodoItem/TodoItem";
 
 function App() {
-  const arr = [
-    { title: "Купить яйца", status: false, id: 1 },
-    { title: "Купить хлеб", status: true, id: 2 },
-    { title: "Купить курицу", status: false, id: 3 },
-    { title: "Купить колу", status: true, id: 4 },
-  ];
+  const arr = JSON.parse(localStorage.getItem('data'))
 
   const [todosArr, setTodosArr] = useState(arr);
+
+  useEffect(() => {
+    localStorage.setItem('data', JSON.stringify(todosArr))
+  }, [todosArr]);
 
   const addTodo = (newStr) => {
     const newTodo = {
