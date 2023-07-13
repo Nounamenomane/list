@@ -6,20 +6,19 @@ import TodoContainer from "./components/TodoContainer/TodoContainer";
 import TodoItem from "./components/TodoItem/TodoItem";
 
 function App() {
-  const arr = JSON.parse(localStorage.getItem('data'))
+  const arr = JSON.parse(localStorage.getItem("data"));
 
   const [todosArr, setTodosArr] = useState(arr);
 
   useEffect(() => {
-    localStorage.setItem('data', JSON.stringify(todosArr))
+    localStorage.setItem("data", JSON.stringify(todosArr));
   }, [todosArr]);
 
   const addTodo = (newStr) => {
     const newTodo = {
       title: newStr,
       status: false,
-      id: todosArr.length + 1,
-      // Date.now()
+      id: Date.now(),
     };
 
     setTodosArr([...todosArr, newTodo]);

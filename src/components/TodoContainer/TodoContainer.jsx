@@ -7,6 +7,7 @@ function TodoContainer(props) {
       {props.todosArr.length ? (
         props.todosArr.map((el) => (
           <TodoItem
+            key={el.id}
             title={el.title}
             id={el.id}
             status={el.status}

@@ -20,9 +20,7 @@ function TodoItem(props) {
   };
 
   const handleSave = () => {
-    const newTitle = inpValue
-     setInpValue(newTitle);
-    props.editSave(props.id, newTitle)
+    props.editSave(props.id, inpValue);
 
     setIsEdit(true);
   };
