@@ -6,7 +6,7 @@ import TodoContainer from "./components/TodoContainer/TodoContainer";
 import TodoItem from "./components/TodoItem/TodoItem";
 
 function App() {
-  const arr = JSON.parse(localStorage.getItem("data"));
+  const arr = JSON.parse(localStorage.getItem("data")) || [];
 
   const [todosArr, setTodosArr] = useState(arr);
 
