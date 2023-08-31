@@ -1,19 +1,19 @@
+import { useSelector } from "react-redux";
 import TodoItem from "../TodoItem/TodoItem";
 import "./TodoContainer.css";
 
-function TodoContainer(props) {
+function TodoContainer() {
+  const todosArr = useSelector((state) => state.todos);
+
   return (
     <div className="wrapper">
-      {props.todosArr.length ? (
-        props.todosArr.map((el) => (
+      {todosArr.length ? (
+        todosArr.map((el) => (
           <TodoItem
             key={el.id}
             title={el.title}
             id={el.id}
             status={el.status}
-            deleteTodo={props.deleteTodo}
-            handleCheckboxChange={props.handleCheckboxChange}
-            editSave={props.editSave}
           />
         ))
       ) : (

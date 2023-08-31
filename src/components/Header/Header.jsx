@@ -1,9 +1,15 @@
+import { useSelector } from "react-redux";
 import "./Header.css";
 
-const Header = (props) => {
+const Header = () => {
+  const todosArr = useSelector((state) => state.todos);
+  const completed = todosArr.reduce((acc, item) => {
+    return acc + item.status;
+  }, 0);
+
   return (
     <div className="header">
-      Todos {props.completed}/{props.length}
+      Todos {completed} / {todosArr.length}
     </div>
   );
 };

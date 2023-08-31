@@ -1,0 +1,9 @@
+.wrapper{
+    display: flex;
+    justify-content: space-around;
+}
+
+.wrapper div {
+        margin: 8px;
+
+}
