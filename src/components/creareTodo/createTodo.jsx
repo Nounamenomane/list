@@ -1,16 +1,16 @@
 import { useState } from "react";
 import "./createTodo.css";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../../redux";
 
-function CreateTodo(props) {
+function CreateTodo() {
   const [value, setValue] = useState("");
+  const disptch = useDispatch()
 
   const submit = (e) => {
     e.preventDefault();
-    // alert(value)
-    // setValue('Hello world')
-    props.addTodo(value);
+    disptch(addTodo(value))
     setValue("");
-    // alert(e.target[0].value);
   };
 
   const hadleChange = (e) => {

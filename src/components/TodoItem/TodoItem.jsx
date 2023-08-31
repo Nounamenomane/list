@@ -1,27 +1,30 @@
 import { useState } from "react";
 import css from "./TodoItem.module.css";
+import { useDispatch } from "react-redux";
+import { checkBoxChange, deleteTodo, editTodo } from "../../redux";
 
 function TodoItem(props) {
-  const [isChecked, setIsChecked] = useState(props.status);
   const [isEdit, setIsEdit] = useState(true);
   const [inpValue, setInpValue] = useState(props.title);
+  const disptch = useDispatch();
 
   const handleCheckboxChange = () => {
-    const newStatus = !isChecked;
-    setIsChecked(newStatus);
-    props.handleCheckboxChange(props.id);
+    disptch(checkBoxChange(props.id));
   };
 
   const handleChangeInput = (e) => {
     setInpValue(e.target.value);
   };
   const handleDel = () => {
-    props.deleteTodo(props.id);
+    disptch(deleteTodo(props.id));
   };
 
   const handleSave = () => {
-    props.editSave(props.id, inpValue);
-
+    const editedTodo = {
+      id: props.id,
+      title: inpValue,
+    };
+    disptch(editTodo(editedTodo));
     setIsEdit(true);
   };
 
@@ -31,10 +34,12 @@ function TodoItem(props) {
         <label>
           <input
             type="checkbox"
-            checked={isChecked}
+            checked={props.status}
             onChange={handleCheckboxChange}
           />
-          <span className={isChecked ? css.complete : ""}>{props.title}</span>
+          <span className={props.status ? css.complete : ""}>
+            {props.title}
+          </span>
         </label>
       ) : (
         <input
